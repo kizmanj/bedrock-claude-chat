@@ -18,7 +18,7 @@ import { Embedding } from "./constructs/embedding";
 import { UsageAnalysis } from "./constructs/usage-analysis";
 import { TIdentityProvider, identityProvider } from "./utils/identity-provider";
 import { ApiPublishCodebuild } from "./constructs/api-publish-codebuild";
-import { WebAclForPublishedApi } from "./constructs/webacl-for-published-api";
+//import { WebAclForPublishedApi } from "./constructs/webacl-for-published-api";
 import * as s3deploy from "aws-cdk-lib/aws-s3-deployment";
 import * as logs from "aws-cdk-lib/aws-logs";
 import * as path from "path";
@@ -131,7 +131,8 @@ export class BedrockChatStack extends cdk.Stack {
 
     const frontend = new Frontend(this, "Frontend", {
       accessLogBucket,
-      webAclId: props.webAclId,
+      //webAclId: props.webAclId,
+      enableMistral: props.enableMistral,
       enableIpV6: props.enableIpV6,
       alternateDomainName: props.alternateDomainName,
       hostedZoneId: props.hostedZoneId,
@@ -230,7 +231,7 @@ export class BedrockChatStack extends cdk.Stack {
     });
 
     // WebAcl for published API
-    const webAclForPublishedApi = new WebAclForPublishedApi(
+    /*const webAclForPublishedApi = new WebAclForPublishedApi(
       this,
       "WebAclForPublishedApi",
       {
@@ -238,7 +239,7 @@ export class BedrockChatStack extends cdk.Stack {
         allowedIpV4AddressRanges: props.publishedApiAllowedIpV4AddressRanges,
         allowedIpV6AddressRanges: props.publishedApiAllowedIpV6AddressRanges,
       }
-    );
+    );*/
 
     new CfnOutput(this, "DocumentBucketName", {
       value: props.documentBucket.bucketName,
@@ -248,10 +249,10 @@ export class BedrockChatStack extends cdk.Stack {
     });
 
     // Outputs for API publication
-    new CfnOutput(this, "PublishedApiWebAclArn", {
+    /*new CfnOutput(this, "PublishedApiWebAclArn", {
       value: webAclForPublishedApi.webAclArn,
-      exportName: `${props.envPrefix}${sepHyphen}PublishedApiWebAclArn`,
-    });
+      exportName: "PublishedApiWebAclArn",
+    });*/
     new CfnOutput(this, "ConversationTableName", {
       value: database.table.tableName,
       exportName: `${props.envPrefix}${sepHyphen}BedrockClaudeChatConversationTableName`,
