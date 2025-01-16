@@ -28,7 +28,7 @@ export interface BedrockChatStackProps extends StackProps {
   readonly envName: string;
   readonly envPrefix: string;
   readonly bedrockRegion: string;
-  readonly webAclId: string;
+  //readonly webAclId: string;
   readonly identityProviders: TIdentityProvider[];
   readonly userPoolDomainPrefix: string;
   readonly publishedApiAllowedIpV4AddressRanges: string[];
