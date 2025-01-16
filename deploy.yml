@@ -140,6 +140,8 @@ Resources:
             Value: !Ref RepoUrl
           - Name: VERSION
             Value: !Ref Version
+          - Name: AWS_DEFAULT_REGION
+            Value: eu-central-1
       ServiceRole:
         Fn::GetAtt:
           - ProjectRole
