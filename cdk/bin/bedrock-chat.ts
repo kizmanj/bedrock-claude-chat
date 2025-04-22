@@ -68,7 +68,7 @@ const chat = new BedrockChatStack(
     crossRegionReferences: true,
     bedrockRegion: params.bedrockRegion,
     //webAclId: waf.webAclArn.value,
-    enableIpV6: waf.ipV6Enabled,
+    enableIpV6: false, //waf.ipV6Enabled,
     identityProviders: params.identityProviders,
     userPoolDomainPrefix: params.userPoolDomainPrefix,
     publishedApiAllowedIpV4AddressRanges:
