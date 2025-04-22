@@ -22,7 +22,6 @@ import * as acm from "aws-cdk-lib/aws-certificatemanager";
 
 export interface FrontendProps {
   //readonly webAclId: string;
-  readonly enableMistral: boolean;
   readonly accessLogBucket?: IBucket;
   readonly enableIpV6: boolean;
   /** 

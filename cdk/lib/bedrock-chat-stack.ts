@@ -132,7 +132,6 @@ export class BedrockChatStack extends cdk.Stack {
     const frontend = new Frontend(this, "Frontend", {
       accessLogBucket,
       //webAclId: props.webAclId,
-      enableMistral: props.enableMistral,
       enableIpV6: props.enableIpV6,
       alternateDomainName: props.alternateDomainName,
       hostedZoneId: props.hostedZoneId,
